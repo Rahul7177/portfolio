@@ -4,6 +4,7 @@ import typespeed from '../Assets/typing.jpg'
 import flappybird from '../Assets/bird2.png'
 import voice_assistant from '../Assets/voiceassist.jpeg'
 import student_management from '../Assets/student.png'
+import fluidity from '../Assets/Fluidity.png'
 
 
 
@@ -48,11 +49,10 @@ const Projects = () => {
     },
     {
         id: 6,
-        src : "/",
-        demo : "",
-        code : "",
-        title : "Coming soon"
-
+        src : fluidity,
+        demo : "https://rahul7177.github.io/Fluidity/",
+        code : "https://github.com/Rahul7177/Fluidity",
+        title : "Fluidity"
     }
     ]
 
