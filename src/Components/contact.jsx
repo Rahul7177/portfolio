@@ -41,7 +41,7 @@ const Contact = () => {
                 </a>
             </li>
             <li className="flex justify-between items-center w-40 h-14 px-4 bg-gray-500 hover:scale-105 hover:bg-blue-600 duration-300">
-                <a href="/Resume.pdf" className="flex justify-between items-center w-full text-white download: true ">
+                <a href="https://drive.google.com/file/d/1B6UhHQCxPvdsh35660hF4fWx9IeP63lA/view?usp=drive_link" className="flex justify-between items-center w-full text-white">
                 <>Resume <BsFillPersonLinesFill size={30}/>
                 </>
                 </a>
