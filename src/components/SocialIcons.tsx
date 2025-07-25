@@ -4,7 +4,6 @@ import "../style/SocialIcons.css";
 import {
   FiGithub,
   FiInstagram,
-  FiYoutube,
   FiLinkedin,
   FiTwitter,
 } from "react-icons/fi";

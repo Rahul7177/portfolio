@@ -7,7 +7,6 @@ import {
   FiLinkedin,
   FiTwitter,
   FiInstagram,
-  FiCodepen,
 } from "react-icons/fi";
 
 interface SocialLink {
