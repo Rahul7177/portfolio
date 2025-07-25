@@ -8,6 +8,12 @@ import '../style/About.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// --- Image Path Configuration for GitHub Pages ---
+// This logic ensures the correct image path is used for both local development and deployment.
+const isGithubActions = process.env.NODE_ENV === 'production';
+const repo = 'portfolio'; // Your repository name
+const basePath = isGithubActions ? `/${repo}` : '';
+
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -15,14 +21,11 @@ const About = () => {
   const photoRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    // Assign the ref's current value to local constants.
-    // This is a clean way to work with refs and helps TypeScript's type inference.
     const section = sectionRef.current;
     const title = titleRef.current;
     const textContent = textContentRef.current;
     const photo = photoRef.current;
 
-    // The guard clause now checks the constants, ensuring they are not null.
     if (!section || !title || !textContent || !photo) {
       return;
     }
@@ -30,13 +33,12 @@ const About = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: section, // Use the constant
+          trigger: section,
           start: "top 60%",
           toggleActions: "play none none none",
         }
       });
 
-      // Use the non-nullable constants throughout the animation logic.
       tl.from(title, { x: -50, opacity: 0, duration: 1, ease: "power3.out" })
         .from(title.nextElementSibling, { scaleX: 0, transformOrigin: 'left', duration: 1, ease: "power3.out" }, "-=0.8");
 
@@ -44,7 +46,7 @@ const About = () => {
 
       tl.from(photo, { scale: 0.9, opacity: 0, duration: 1.2, ease: "power4.out" }, "<");
 
-    }, section); // Scope the context to the main section element
+    }, section);
 
     return () => ctx.revert(); 
   }, []);
@@ -65,7 +67,6 @@ const About = () => {
             My journey in tech began with curiosity and has evolved into a purpose: building digital solutions that truly matter. Over the years, I’ve honed my skills in various web technologies, while actively working on impactful projects ranging from AI-powered assistants to dynamic web platforms.
           </p>
           <p>
-            {/* THIS LINE IS THE FIX: "I'm" and "I’m" are replaced with "I&apos;m" */}
             I&apos;m driven by the belief that even small lines of code can lead to big, meaningful change — and I&apos;m excited to contribute to teams that value impact just as much as innovation.
           </p>
           <p>
@@ -82,7 +83,13 @@ const About = () => {
           <div className="photo-overlay"></div>
           <div className="photo-border"></div>
           <div className="photo-image-wrapper">
-            <Image src="/rahul.jpg" alt="profile" fill className="profile-image object-cover" />
+            {/* FIXED: The basePath is prepended to the image src */}
+            <Image
+              src={`${basePath}/rahul.jpg`}
+              alt="profile"
+              fill
+              className="profile-image object-cover"
+            />
           </div>
         </div>
       </div>
