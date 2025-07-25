@@ -16,7 +16,7 @@ const About = () => {
       <div className="about-content-grid">
         <div className="text-content">
           <p>
-            Hi, I’m Rahul Raj — a passionate <span className='font-bold underline underline-offset-2'>Full Stack Developer</span> with certifications in <span className='font-bold underline underline-offset-2'>MERN Stack</span> and <span className='font-bold underline underline-offset-2'>AWS</span> and recent Computer Science graduate from VIT (2025) with a deep interest in crafting intelligent, user-centric web applications.
+            Hi, I&apos;m Rahul Raj — a passionate <span className='font-bold underline underline-offset-2'>Full Stack Developer</span> with certifications in <span className='font-bold underline underline-offset-2'>MERN Stack</span> and <span className='font-bold underline underline-offset-2'>AWS</span> and recent Computer Science graduate from VIT (2025) with a deep interest in crafting intelligent, user-centric web applications.
           </p>
           <p>
             My journey in tech began with curiosity and has evolved into a purpose: building digital solutions that truly matter. Over the years, I’ve honed my skills in various web technologies, while actively working on impactful projects ranging from AI-powered assistants to dynamic web platforms.
