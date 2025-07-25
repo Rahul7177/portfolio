@@ -90,7 +90,7 @@ const Hero = () => {
 
     if (!component || !content) return;
 
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       const timelineElements = gsap.utils.toArray(content.children);
       
       gsap.from(timelineElements, {

@@ -39,7 +39,7 @@ const Contact = () => {
     if (!component) return;
 
     // Scope animations for proper cleanup
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       // Animate all the main elements in a staggered sequence
       gsap.from(gsap.utils.toArray('.anim-element'), {
         y: 50,
