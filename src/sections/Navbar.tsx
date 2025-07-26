@@ -9,7 +9,9 @@ import "../style/Navbar.css"
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
-
+  const isGithubActions = process.env.NODE_ENV === 'production';
+  const repo = 'portfolio'; // Your repository name
+  const basePath = isGithubActions ? `/${repo}` : '';
   const sectionLinks = [
     { name: "About", link: "/#about" },
     { name: "Experience", link: "/#experience" },
@@ -21,11 +23,11 @@ const Navbar = () => {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, link: string) => {
     // 1. Prevent the default browser behavior of instantly jumping to the section.
     e.preventDefault();
-    
+
     // 2. Extract the element ID from the link (e.g., from "/#about" to "about").
     const targetId = link.replace("/#", "");
     const elem = document.getElementById(targetId);
-    
+
     // 3. If the element exists, scroll to it smoothly.
     if (elem) {
       elem.scrollIntoView({
@@ -37,7 +39,7 @@ const Navbar = () => {
   return (
     <nav className="h-fit bg-white text-[vsr(--dark-text)] font-raleway w-full px-0 sm:px-6 md:px-0 z-10 shadow-lg">
       <div className="flex justify-between px-16 items-center w-full relative py-2 max-w-screen-2xl mx-auto navbar backdrop-blur-3xl">
-        
+
         {/* Logo Section */}
         <div className="flex items-center flex-shrink-0" style={{ minWidth: "fit-content" }}>
           <Link href="/" className="flex items-center transition-all duration-300 ease-in-out">
@@ -83,7 +85,7 @@ const Navbar = () => {
                 {name}
               </Link>
             ))}
-            <Button text="Resume" link="/resume.pdf" />
+            <Button text="Resume" link={`${basePath}/resume.pdf`} />
           </div>
         )}
       </div>
