@@ -25,12 +25,15 @@ const fireCode = Fira_Code({
   variable: '--font-firacode',
 });
 
+  const isGithubActions = process.env.NODE_ENV === 'production';
+  const repo = 'portfolio';
+  const basePath = isGithubActions ? `/${repo}` : '';
 
 export const metadata: Metadata = {
   title: "Rahul Raj | Portfolio",
   description: "A portfolio of impact",
   icons: {
-    icon: '/favicon.svg',
+    icon: `${basePath}/favicon.svg`,
   },
 };
 

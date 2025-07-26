@@ -10,7 +10,7 @@ import "../style/Navbar.css"
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const isGithubActions = process.env.NODE_ENV === 'production';
-  const repo = 'portfolio'; // Your repository name
+  const repo = 'portfolio';
   const basePath = isGithubActions ? `/${repo}` : '';
   const sectionLinks = [
     { name: "About", link: "/#about" },
@@ -57,7 +57,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <Button text="Resume" link="http://localhost:3000/resume.pdf" />
+          <Button text="Resume" link={`${basePath}/resume.pdf`} />
         </div>
 
         {/* Mobile Toggle Button */}
