@@ -152,7 +152,7 @@ const Contact = () => {
             placeholder="Name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full p-4 bg-[var(--dark-text)] text-slate-200 rounded-md border ${errors.name ? "border-red-500" : "border-slate-700"} focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all`}
+            className={`w-full p-4 bg-[var(--dark-text)] text-slate-200 rounded-md border ${errors.name ? "border-red-500" : "border-slate-700"} focus:outline-none focus:ring-2 focus:ring-[var(--theme-color)] transition-all`}
           />
           {errors.name && <p className="text-red-500 text-sm mt-2">{errors.name}</p>}
         </div>
@@ -166,7 +166,7 @@ const Contact = () => {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full p-4 bg-[var(--dark-text)] text-slate-200 rounded-md border ${errors.email ? "border-red-500" : "border-slate-700"} focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all`}
+            className={`w-full p-4 bg-[var(--dark-text)] text-slate-200 rounded-md border ${errors.email ? "border-red-500" : "border-slate-700"} focus:outline-none focus:ring-2 focus:ring-[var(--theme-color)] transition-all`}
           />
           {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email}</p>}
         </div>
@@ -180,7 +180,7 @@ const Contact = () => {
             rows={5}
             value={formData.message}
             onChange={handleChange}
-            className={`w-full p-4 bg-[var(--dark-text)] text-slate-200 rounded-md border ${errors.message ? "border-red-500" : "border-slate-700"} focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all resize-none`}
+            className={`w-full p-4 bg-[var(--dark-text)] text-slate-200 rounded-md border ${errors.message ? "border-red-500" : "border-slate-700"} focus:outline-none focus:ring-2 focus:ring-[var(--theme-color)] transition-all resize-none`}
           ></textarea>
           {errors.message && <p className="text-red-500 text-sm mt-2">{errors.message}</p>}
         </div>
@@ -197,7 +197,7 @@ const Contact = () => {
       </form>
       
       {status === "success" && (
-        <p className="text-center text-green-400 mt-6">
+        <p className="text-center text-green-600 mt-6">
           {/* FIXED: Replaced ' with &apos; to fix the unescaped entity error. */}
           Thank you for your message! I&apos;ll get back to you soon.
         </p>

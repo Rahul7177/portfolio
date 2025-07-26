@@ -25,9 +25,13 @@ const fireCode = Fira_Code({
   variable: '--font-firacode',
 });
 
+
 export const metadata: Metadata = {
   title: "Rahul Raj | Portfolio",
   description: "A portfolio of impact",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
