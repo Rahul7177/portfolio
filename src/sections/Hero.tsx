@@ -6,12 +6,13 @@ import gsap from 'gsap';
 
 import { 
   SiJavascript, SiReact, SiNodedotjs, SiExpress, SiMongodb, 
-  SiHtml5, SiCss3, SiGithub, SiCplusplus 
+  SiHtml5, SiCss3, SiGithub, SiCplusplus, 
+  SiGit, SiGooglegemini 
 } from 'react-icons/si';
 
 const techLogos = [
   SiCplusplus, SiJavascript, SiNodedotjs, SiReact, SiGithub, 
-  SiHtml5, SiCss3, SiExpress, SiMongodb
+  SiHtml5, SiCss3, SiExpress, SiMongodb, SiGit, SiGooglegemini
 ];
 
 type AnimatedItem = {
@@ -23,28 +24,14 @@ type AnimatedItem = {
     size: string;
 };
 
-const shuffle = (array: number[]) => {
-  let currentIndex = array.length, randomIndex;
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-  }
-  return array;
-};
-
 const Hero = () => {
-  // --- State for background animations ---
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [animatedItems, setAnimatedItems] = useState<AnimatedItem[]>([]);
 
-  // --- Refs for GSAP animations (with correct types) ---
   const componentRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
 
-  // --- Effect for background icons and parallax ---
   useEffect(() => {
-    // FIXED: The event 'e' is now correctly typed as MouseEvent.
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
@@ -55,35 +42,41 @@ const Hero = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    // --- Lane-based generation logic ---
-    const numItems = 15;
-    const numLanes = 6;
-    const laneWidth = 50 / numLanes;
-    
-    const laneAssignments = Array.from({ length: numItems }, (_, i) => i % numLanes);
-    const shuffledLanes = shuffle(laneAssignments);
+    // --- UPDATED: All icons now have the same fixed scroll speed and size ---
+    const numLanes = 5;
+    const iconsPerLane = 3;
+    // All icons take 20s to scroll, ensuring they all move at the same speed.
+    const animationDuration = 12; 
+    const staggerDelay = animationDuration / iconsPerLane; // Time between icons in the same lane
 
-    const generatedItems = Array.from({ length: numItems }).map((_, index) => {
-      const laneIndex = shuffledLanes[index];
-      const leftPosition = 60 + (laneIndex * laneWidth);
+    const items = [];
+    let iconCounter = 0;
 
-      return {
-        id: index,
-        IconComponent: techLogos[index % techLogos.length],
-        left: `${leftPosition}%`,
-        duration: `${Math.random() * 10 + 15}s`,
-        delay: `${Math.random() * -25}s`,
-        size: ['text-3xl', 'text-4xl', 'text-5xl'][Math.floor(Math.random() * 3)]
-      };
-    });
-    setAnimatedItems(generatedItems);
+    for (let i = 0; i < numLanes; i++) {
+      // Each lane starts at a slightly different time for a more natural effect.
+      const laneInitialDelay = Math.random() * staggerDelay; 
+      for (let j = 0; j < iconsPerLane; j++) {
+        const laneIndex = i;
+        const leftPosition = 60 + (laneIndex * (40 / numLanes));
+        
+        items.push({
+          id: iconCounter++,
+          IconComponent: techLogos[(i * iconsPerLane + j) % techLogos.length],
+          left: `${leftPosition}%`,
+          duration: `${animationDuration}s`,
+          delay: `${laneInitialDelay + j * staggerDelay}s`,
+          // FIXED: All icons are now the same size for a uniform look.
+          size: 'text-4xl' 
+        });
+      }
+    }
+    setAnimatedItems(items);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
-  // --- GSAP Animation Effect ---
   useLayoutEffect(() => {
     const component = componentRef.current;
     const content = heroContentRef.current;
@@ -113,8 +106,9 @@ const Hero = () => {
   };
 
   return (
-    <div ref={componentRef} className="hero flex flex-col items-start justify-center gap-6 mt-8 mb-8 px-12 min-h-fit hero-section py-12 bg-white rounded-2xl shadow-lg relative overflow-hidden border-4 border-neutral-600 border-b-12">
+    <div ref={componentRef} className="hero flex flex-col items-start justify-center gap-6 mt-8 mb-8 px-12 min-h-fit hero-section py-8 bg-white rounded-2xl shadow-lg relative overflow-hidden border-4 border-neutral-600 border-b-12">
       
+      {/* Background Icons Layer */}
       <div 
         style={parallaxStyle} 
         className="absolute inset-0 z-0 font-raleway font-medium pointer-events-none"
@@ -134,11 +128,13 @@ const Hero = () => {
         ))}
       </div>
 
+
+      {/* Text Content Layer */}
       <div ref={heroContentRef} className="relative z-10 flex flex-col items-start gap-6">
         <h1 className="hero-title text-[var(--extra-dark-text)] text-md font-firacode tracking-normal ml-1">
           Hi, my name is
         </h1>
-        <h2 className="hero-title-large font-raleway font-extrabold uppercase text-[var(--dark-text)] text-7xl text-shadow-lg backdrop-blur-2xl">
+        <h2 className="hero-title-large font-raleway font-extrabold uppercase text-[var(--dark-text)] text-7xl text-shadow-lg">
           Rahul Raj
         </h2>
         <div className="flex flex-wrap items-baseline gap-x-4">
