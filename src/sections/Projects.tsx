@@ -104,7 +104,7 @@ function Projects() {
       >
         <h2 className="text-4xl font-extrabold font-raleway text-[var(--dark-text)] section-title">
           {/* FIXED: Escaped the apostrophe */}
-          Things I&apos;ve Built
+          Things I have Built
         </h2>
         <div className="w-full h-[2px] bg-slate-700"></div>
       </div>

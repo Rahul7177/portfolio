@@ -61,16 +61,16 @@ const About = () => {
       <div className="about-content-grid">
         <div ref={textContentRef} className="text-content">
           <p>
-            Hi, I&apos;m Rahul Raj — a passionate <span className='font-bold underline underline-offset-2'>Full Stack Developer</span> with certifications in <span className='font-bold underline underline-offset-2'>MERN Stack</span> and <span className='font-bold underline underline-offset-2'>AWS</span> and recent Computer Science graduate from VIT (2025) with a deep interest in crafting intelligent, user-centric web applications.
+            Hi, I am Rahul Raj — a passionate <span className='font-bold underline underline-offset-2'>Full Stack Developer</span> with certifications in <span className='font-bold underline underline-offset-2'>MERN Stack</span> and <span className='font-bold underline underline-offset-2'>AWS</span> and recent Computer Science graduate from VIT (2025) with a deep interest in crafting intelligent, user-centric web applications.
           </p>
           <p>
-            My journey in tech began with curiosity and has evolved into a purpose: building digital solutions that truly matter. Over the years, I’ve honed my skills in various web technologies, while actively working on impactful projects ranging from AI-powered assistants to dynamic web platforms.
+            My journey in tech began with curiosity and has evolved into a purpose: building digital solutions that truly matter. Over the years, I have honed my skills in various web technologies, while actively working on impactful projects ranging from AI-powered assistants to dynamic web platforms.
           </p>
           <p>
-            I&apos;m driven by the belief that even small lines of code can lead to big, meaningful change — and I&apos;m excited to contribute to teams that value impact just as much as innovation.
+            I am driven by the belief that even small lines of code can lead to big, meaningful change — and I am excited to contribute to teams that value impact just as much as innovation.
           </p>
           <p>
-            Here are a few technologies I’ve been working with recently:
+            Here are a few technologies I have been working with recently:
           </p>
           <ul className="tech-list">
             {['React', 'Next.js', 'Typescript', 'Rest APIs', 'Node.js', 'Express.js', 'Mongo DB', 'Gsap', 'Framer Motion'].map((tech) => (
