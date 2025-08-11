@@ -1,34 +1,42 @@
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
-export const CustomH2 = (props: any) => (
+// Define a reusable type for the component props to avoid the 'any' error
+type MdxComponentProps = {
+  children?: ReactNode;
+  href?: string;
+  [key: string]: any; 
+};
+
+export const CustomH2 = (props: MdxComponentProps) => (
   <h2 
     className="text-3xl font-bold font-raleway mt-12 mb-4 pb-2 border-b border-neutral-200 text-neutral-700" 
     {...props} 
   />
 );
 
-export const CustomP = (props: any) => (
+export const CustomP = (props: MdxComponentProps) => (
   <p 
     className="my-6 text-md leading-relaxed text-neutral-800" 
     {...props} 
   />
 );
 
-export const CustomUl = (props: any) => (
+export const CustomUl = (props: MdxComponentProps) => (
   <ul 
     className="my-6 pl-6 list-disc space-y-2" 
     {...props} 
   />
 );
 
-export const CustomLi = (props: any) => (
+export const CustomLi = (props: MdxComponentProps) => (
   <li 
     className="pl-2 text-md leading-relaxed text-neutral-800 marker:text-blue-600" 
     {...props} 
   />
 );
 
-export const CustomA = (props: any) => (
+export const CustomA = (props: MdxComponentProps) => (
   <Link 
     href={props.href || ''} 
     className="font-semibold text-blue-600 hover:underline" 
@@ -36,7 +44,7 @@ export const CustomA = (props: any) => (
   />
 );
 
-export const CustomBlockquote = (props: any) => (
+export const CustomBlockquote = (props: MdxComponentProps) => (
   <blockquote 
     className="my-6 py-2 px-4 border-l-4 border-blue-500 bg-neutral-200 text-neutral-600 italic" 
     {...props} 
