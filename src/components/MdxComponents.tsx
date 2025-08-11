@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import { ReactNode, HTMLAttributes } from 'react';
 
-// Define a reusable type for the component props to avoid the 'any' error
-type MdxComponentProps = {
+// Use HTMLAttributes to allow any standard HTML prop like 'className', etc.
+type MdxComponentProps = HTMLAttributes<HTMLElement> & {
   children?: ReactNode;
   href?: string;
-  [key: string]: any; 
 };
 
 export const CustomH2 = (props: MdxComponentProps) => (
@@ -22,6 +21,7 @@ export const CustomP = (props: MdxComponentProps) => (
   />
 );
 
+// ... (rest of your components remain the same, they will all use the new, correct type)
 export const CustomUl = (props: MdxComponentProps) => (
   <ul 
     className="my-6 pl-6 list-disc space-y-2" 
