@@ -17,7 +17,6 @@
 {
   color: var(--theme-color);
   transform: translateX(-5px);
-  rotate: 0;
 }
 
 .email-link:focus

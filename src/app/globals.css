@@ -1,16 +1,5 @@
-/*
- * Tailwind CSS Directives
- * These three lines are essential for Tailwind to inject its styles.
- * They replace the older `@import "tailwindcss";` syntax.
- */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/*
- * Root variables for color, typography, and spacing
- * All of these are now correctly defined before any custom layers.
- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -43,10 +32,6 @@
   --font-outfit: 'Outfit', sans-serif;
 }
 
-/*
- * Custom utility classes defined within the @layer directive.
- * These will now be properly processed by Tailwind.
- */
 @layer utilities {
   .font-outfit {
     font-family: var(--font-outfit);
@@ -61,18 +46,12 @@
   }
 }
 
-/*
- * Media query for smaller screens.
- */
 @media screen and (max-width: 480px) {
   :root {
     --tgiant: 36px;
   }
 }
 
-/*
- * Global styles
- */
 * {
   box-sizing: border-box;
 }
