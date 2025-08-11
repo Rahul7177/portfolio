@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '../../../../../lib/mongodb';
 
 // A shared function to handle database updates
@@ -28,7 +28,7 @@ async function updateLikes(slug: string, incrementValue: number) {
 
 // Handles POST requests (liking a post)
 export async function POST(
-  request: Request, 
+  request: NextRequest, 
   { params }: { params: { slug: string } }
 ) {
   return updateLikes(params.slug, 1);
@@ -36,7 +36,7 @@ export async function POST(
 
 // Handles DELETE requests (unliking a post)
 export async function DELETE(
-  request: Request, 
+  request: NextRequest, 
   { params }: { params: { slug: string } }
 ) {
   return updateLikes(params.slug, -1);

@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '../../../../../lib/mongodb';
 
 // This function specifically handles POST requests
 export async function POST(
-  request: Request, 
+  request: NextRequest, 
   { params }: { params: { slug: string } }
 ) {
   const slug = params.slug;
