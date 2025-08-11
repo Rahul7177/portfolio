@@ -1,7 +1,7 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import clientPromise from './mongodb';
-import { ObjectId } from 'mongodb';
+// import { ObjectId } from 'mongodb';
 
 // Helper function to connect to the DB and get the collection
 async function getPostsCollection() {

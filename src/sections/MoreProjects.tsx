@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { FiFolder, FiExternalLink } from "react-icons/fi";
 import { motion } from "framer-motion";
-import Button from "@/components/Button";
+// import Button from "@/components/Button";
 
 // Define the type for a single project
 interface Project {

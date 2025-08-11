@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion} from "framer-motion";
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { CustomH2, CustomP, CustomUl, CustomLi, CustomA, CustomBlockquote, CustomHr } from '@/components/MdxComponents';
 import { FiArrowRight, FiShare2, FiHeart, FiEye } from 'react-icons/fi';
