@@ -6,18 +6,25 @@ const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
 
 const repo = 'portfolio'; // Replace with your repository name
 
+// Import MDX wrapper
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+});
+
 const nextConfig = {
-  // Use the static export feature ONLY when deploying to GitHub Pages.
+  // Keep your GitHub Pages export logic
   output: isGithubActions ? 'export' : undefined,
 
-  // Set the basePath and assetPrefix ONLY for the GitHub Pages deployment.
   basePath: isGithubActions ? `/${repo}` : '',
   assetPrefix: isGithubActions ? `/${repo}/` : '',
-  
+
   images: {
-    // Image optimization is not available for static exports.
-    unoptimized: true,
+    unoptimized: true, // keep this for static export
   },
+
+  // Enable MDX page extensions
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 };
 
-module.exports = nextConfig;
+// Export with MDX support
+module.exports = withMDX(nextConfig);

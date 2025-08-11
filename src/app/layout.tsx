@@ -1,39 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Raleway } from 'next/font/google';
-import { Fira_Code } from 'next/font/google';
-import { Outfit } from 'next/font/google';
+import { Raleway, Fira_Code, Outfit } from "next/font/google";
+import Navbar from "@/sections/Navbar";
+import Footer from "@/sections/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
+import "./globals.css";
 
-import './globals.css';
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const raleway = Raleway({ subsets: ['latin'], variable: '--font-raleway' });
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
+// Define the fonts your application will use
+const raleway = Raleway({ subsets: ["latin"], variable: "--font-raleway" });
 const fireCode = Fira_Code({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-firacode',
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-firacode",
 });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
-  const isGithubActions = process.env.NODE_ENV === 'production';
-  const repo = 'portfolio';
-  const basePath = isGithubActions ? `/${repo}` : '';
+// This logic is for handling the base path on GitHub Pages
+const isGithubActions = process.env.NODE_ENV === 'production';
+const repo = 'portfolio';
+const basePath = isGithubActions ? `/${repo}` : '';
 
 export const metadata: Metadata = {
   title: "Rahul Raj | Portfolio",
   description: "A portfolio of impact",
   icons: {
-    icon: `${basePath}/favicon.svg`,
+    icon: `${basePath}/favicon.svg`, // Your favicon path
   },
 };
 
@@ -47,7 +38,14 @@ export default function RootLayout({
       <body
         className={`${raleway.variable} ${fireCode.variable} ${outfit.variable} antialiased`}
       >
+        {/* These components will now appear on every page of your site */}
+        <CustomCursor />
+        <Navbar />
+        
+        {/* 'children' will be your actual page content (e.g., homepage or a blog post) */}
         {children}
+        
+        <Footer />
       </body>
     </html>
   );

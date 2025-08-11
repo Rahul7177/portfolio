@@ -36,8 +36,10 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build with Next.js
-        # This 'env' block makes the secrets available to the build command
         env:
+          # --- Start of The Only Change You Need ---
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          # --- End of The Only Change You Need ---
           NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
           NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
           NEXT_PUBLIC_EMAILJS_USER_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_USER_ID }}
@@ -45,7 +47,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This is the folder that Next.js exports to
           path: ./out
 
   # Deployment job
