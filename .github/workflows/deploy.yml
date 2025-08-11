@@ -20,30 +20,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
+      
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      
+      # Use 'npm ci' for a clean and reliable install
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
       - name: Build with Next.js
         env:
-          # --- Start of The Only Change You Need ---
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          # --- End of The Only Change You Need ---
           NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
-          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
-          NEXT_PUBLIC_EMAILJS_USER_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_USER_ID }}
+          # ... (your other secrets)
         run: npm run build
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
